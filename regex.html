@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+	<input type="password" name="password" id="password" />
+	<input type="button" value="Test" onclick="checkpass()" />
+	<div id="msg">Password must be 10-14 characters and contains 1 capital letter 1 small letter 1 digit and 1 of ' ! # $ % & ? @ " ' charcters</div>
+
+	<script>
+	function checkpass()
+	{
+		var str = document.getElementById('password').value;
+		var reg = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!#$%&?@"]).{10,14}/g;
+		var pass = str.match(reg); 
+		if(pass != null)
+		{
+			pass = pass.toString();
+			if(str.length > pass.length)
+			{   
+				document.getElementById('msg').innerHTML='password too long';
+			}
+			else
+			{
+				document.getElementById('msg').innerHTML='password ok';
+			}
+		}
+		else
+		{
+			document.getElementById('msg').innerHTML='password must have 1 capital 1 small 1 digit and 1 special character';
+		}
+	}
+	</script>
+  </body>
+</html>
